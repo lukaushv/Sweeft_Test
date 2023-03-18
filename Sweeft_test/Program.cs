@@ -48,6 +48,7 @@ Console.WriteLine(Algorithms.IsProperly(proper_test1) + "\n");
 Console.WriteLine("Staircase variants test:");
 Console.WriteLine(Algorithms.CountVariants(stair_test5) + "\n");
 
+
 GetTeachers.PrintTeachers("გიორგი");
 
 RestAPI.GenerateCountryDataFiles();
