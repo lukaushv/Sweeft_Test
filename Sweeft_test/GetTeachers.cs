@@ -40,7 +40,7 @@ namespace Sweeft_test
                 join st in context.Students on s.Id equals st.Subject_id
                 where st.Fname == studentName
                 select t
-            ).Distinct().ToArray();
+            ).ToArray();
 
 
             return teachers;
