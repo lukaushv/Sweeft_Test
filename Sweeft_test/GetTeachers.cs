@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using MySqlX.XDevAPI.Common;
 using Sweeft_test;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,8 @@ namespace Sweeft_test
         {
             var optionsBuilder = new DbContextOptionsBuilder<UniContext>();
 
-            optionsBuilder.UseSqlServer(@"Data Source=localhost;
-    Initial Catalog=AdventureWorks2019_luka;persist security info=True;
+            optionsBuilder.UseSqlServer(@"Data Source=LUKA-USHVERIDZE;
+    Initial Catalog=AdventureWorks2019_luka;encrypt=true;TrustServerCertificate=true;persist security info=True;
     Integrated Security=SSPI;");
             
             using (var context = new UniContext(optionsBuilder.Options))
@@ -33,9 +34,16 @@ namespace Sweeft_test
             
         public static Teacher[] GetAllTeachersByStudent(string studentName, UniContext context)
         {
-            return context.Students.Where
-                (s => s.Fname == studentName)
-                .SelectMany(s => s.Teachers).ToArray();
-        }        
+            Teacher[] teachers = (
+                from t in context.Teachers
+                join s in context.Subjects on t.Subject_Id equals s.Id
+                join st in context.Students on s.Id equals st.Subject_id
+                where st.Fname == studentName
+                select t
+            ).Distinct().ToArray();
+
+
+            return teachers;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Sweeft_test;
 using System.Text.Json;
-/*
+
 string palindrome_test1 = "first test case";
 string palindrome_test2 = "  ";
 string palindrome_test3 = "ana";
@@ -48,9 +48,7 @@ Console.WriteLine(Algorithms.IsProperly(proper_test1) + "\n");
 Console.WriteLine("Staircase variants test:");
 Console.WriteLine(Algorithms.CountVariants(stair_test5) + "\n");
 
-*/
-
-
+GetTeachers.PrintTeachers("გიორგი");
 
 RestAPI.GenerateCountryDataFiles();
 Console.WriteLine("Country data files generated");

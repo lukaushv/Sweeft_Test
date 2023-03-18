@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace Sweeft_test
         public string Fname { get; set; }
         public string Lname { get; set; }
         public int Gender { get; set; }
+
+        [Column("Subject_Id")]
         public int Subject_id { get; set; }
         public Subject Subject { get; set; }
         public ICollection<Teacher> Teachers { get; set; }
